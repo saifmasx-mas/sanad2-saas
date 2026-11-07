@@ -1,0 +1,6 @@
+{
+  "name": "سَنَد - منصة خدمات المغتربين السوريين",
+  "description": "منصة متكاملة تربط المغتربين السوريين بعائلاتهم في الداخل لتلبية احتياجاتهم الأساسية مع أتمتة الدفع والوكيل الذكي لتحديث الأسعار.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
