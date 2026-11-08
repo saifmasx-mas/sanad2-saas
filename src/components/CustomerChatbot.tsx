@@ -62,6 +62,12 @@ export const CustomerChatbot: React.FC = () => {
   const generateBotReply = (userQuery: string): { reply: string; actionLink?: { label: string; url: string } } => {
     const q = userQuery.toLowerCase();
 
+    if (q.includes('تتبع') || q.includes('خريطة') || q.includes('وين الطلب') || q.includes('أين الطلب') || q.includes('موقع المندوب')) {
+      return {
+        reply: 'يمكنك الآن تتبع موقع مندوب التوصيل المباشر في شوارع دمشق والمحافظات السورية لحظة بلحظة عبر خريطة Google Maps التفاعلية من تبويب "تتبع الطلبات (Live)" في القائمة العلوية، مع معرفة وقت الوصول التقديري والاتصال المباشر بالمندوب.'
+      };
+    }
+
     if (q.includes('سلة') || q.includes('غذائ') || q.includes('طعام') || q.includes('رز') || q.includes('أكل')) {
       return {
         reply: 'سلة الخير الملكية (35 كغ) مجهزة بأعلى مواصفات الجودة (رز بسمتي، سكر، سمنة بلدية، زيت، طحين، معلبات، شاي). سعرها 48$ فقط شاملة التوصيل حتى باب المنزل في دمشق، ريف دمشق، حلب، حمص، الساحل وحماة خلال 24 ساعة مع فيديو توثيقي.'
@@ -148,15 +154,15 @@ export const CustomerChatbot: React.FC = () => {
 
   return (
     <>
-      {/* زر فتح الشات العائم */}
+      {/* زر فتح الشات العائم ببريق ذهبي وأرجواني ملكي */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 left-6 z-40 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl shadow-emerald-500/30 flex items-center gap-2.5 transition transform hover:scale-105 cursor-pointer font-bold font-['Cairo']"
+          className="fixed bottom-6 left-6 z-40 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 hover:from-amber-300 hover:to-yellow-200 text-purple-950 p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl shadow-amber-500/30 flex items-center gap-2.5 transition transform hover:scale-105 cursor-pointer font-black font-['Cairo']"
         >
           <div className="relative">
             <Bot className="w-6 h-6" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-950 absolute -top-0.5 -right-0.5 animate-ping" />
+            <span className="w-2.5 h-2.5 rounded-full bg-purple-950 absolute -top-0.5 -right-0.5 animate-ping" />
           </div>
           <span className="hidden sm:inline text-xs font-black">مساعد سَنَد 2 الذكي</span>
         </button>
@@ -164,20 +170,20 @@ export const CustomerChatbot: React.FC = () => {
 
       {/* نافذة المحادثة التفاعلية */}
       {isOpen && (
-        <div className="fixed bottom-6 left-4 sm:left-6 z-50 w-[94vw] sm:w-[400px] h-[550px] max-h-[85vh] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-scale-in text-slate-100 font-['Cairo']" dir="rtl">
+        <div className="fixed bottom-6 left-4 sm:left-6 z-50 w-[94vw] sm:w-[400px] h-[550px] max-h-[85vh] bg-[#180530] border border-amber-400/50 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-scale-in text-purple-100 font-['Cairo'] backdrop-blur-xl" dir="rtl">
           
           {/* شريط رأس الشات */}
-          <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-slate-950 p-4 border-b border-slate-800 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#280754] via-[#3b0b78] to-[#180238] p-4 border-b border-purple-800/80 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center font-bold shadow-md shadow-emerald-500/20">
+              <div className="w-9 h-9 rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-400 text-purple-950 flex items-center justify-center font-bold shadow-md shadow-amber-400/20">
                 <Bot className="w-5 h-5" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-bold text-sm text-white">مساعد سَنَد 2 للعملاء</h3>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span className="w-2 h-2 rounded-full bg-amber-400 shadow-sm shadow-amber-400" />
                 </div>
-                <p className="text-[10px] text-emerald-300">متصل 24/7 للرد الفوري على المغتربين</p>
+                <p className="text-[10px] text-amber-300">متصل 24/7 للرد الفوري على المغتربين</p>
               </div>
             </div>
 
@@ -187,13 +193,13 @@ export const CustomerChatbot: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 title="محادثة واتساب مباشرة"
-                className="p-1.5 text-emerald-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+                className="p-1.5 text-amber-300 hover:text-white rounded-lg hover:bg-purple-900/40 transition"
               >
                 <Phone className="w-4 h-4" />
               </a>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+                className="p-1.5 text-purple-300 hover:text-white rounded-lg hover:bg-purple-900/40 transition cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -201,22 +207,22 @@ export const CustomerChatbot: React.FC = () => {
           </div>
 
           {/* محتوى الرسائل */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 bg-slate-950/70 text-xs">
+          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 bg-[#0e021f]/90 text-xs">
             {messages.map(msg => (
               <div
                 key={msg.id}
                 className={`flex gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-xl bg-purple-900/60 text-amber-300 border border-amber-400/30 flex items-center justify-center shrink-0 mt-0.5">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
 
                 <div className={`max-w-[82%] space-y-2 ${
                   msg.sender === 'user'
-                    ? 'bg-emerald-600 text-slate-950 rounded-2xl rounded-tl-sm p-3 font-semibold shadow-md'
-                    : 'bg-slate-900 border border-slate-800 text-slate-200 rounded-2xl rounded-tr-sm p-3.5 shadow-md leading-relaxed'
+                    ? 'bg-gradient-to-r from-amber-400 to-yellow-400 text-purple-950 rounded-2xl rounded-tl-sm p-3 font-bold shadow-md'
+                    : 'bg-[#1e073d] border border-purple-800/80 text-purple-100 rounded-2xl rounded-tr-sm p-3.5 shadow-md leading-relaxed'
                 }`}>
                   <p>{msg.text}</p>
                   
@@ -225,7 +231,7 @@ export const CustomerChatbot: React.FC = () => {
                       href={msg.actionLink.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl text-[11px] mt-1 transition"
+                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-purple-950 font-black px-3 py-1.5 rounded-xl text-[11px] mt-1 transition shadow-sm"
                     >
                       <span>{msg.actionLink.label}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -234,12 +240,12 @@ export const CustomerChatbot: React.FC = () => {
 
                   {msg.suggestions && (
                     <div className="pt-2 flex flex-col gap-1.5">
-                      <span className="text-[10px] text-slate-400">أسئلة شائعة يمكنك النقر عليها:</span>
+                      <span className="text-[10px] text-purple-300/80">أسئلة شائعة يمكنك النقر عليها:</span>
                       {msg.suggestions.map((sug, idx) => (
                         <button
                           key={idx}
                           onClick={() => handleSendMessage(sug)}
-                          className="text-right text-[11px] bg-slate-950/80 hover:bg-emerald-950/60 border border-slate-800 hover:border-emerald-500/40 text-slate-300 hover:text-emerald-300 p-2 rounded-xl transition cursor-pointer"
+                          className="text-right text-[11px] bg-[#0e021f] hover:bg-purple-950 border border-purple-800/80 hover:border-amber-400/60 text-purple-200 hover:text-amber-300 p-2 rounded-xl transition cursor-pointer"
                         >
                           💬 {sug}
                         </button>
@@ -247,7 +253,7 @@ export const CustomerChatbot: React.FC = () => {
                     </div>
                   )}
 
-                  <span className={`block text-[9px] ${msg.sender === 'user' ? 'text-emerald-950/70' : 'text-slate-500'} text-left`}>
+                  <span className={`block text-[9px] ${msg.sender === 'user' ? 'text-purple-950/70' : 'text-purple-400'} text-left`}>
                     {msg.timestamp}
                   </span>
                 </div>
@@ -255,14 +261,14 @@ export const CustomerChatbot: React.FC = () => {
             ))}
 
             {isTyping && (
-              <div className="flex gap-2 items-center text-xs text-slate-400">
-                <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+              <div className="flex gap-2 items-center text-xs text-purple-300">
+                <div className="w-7 h-7 rounded-xl bg-purple-900/60 text-amber-300 border border-amber-400/30 flex items-center justify-center shrink-0">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="bg-slate-900 border border-slate-800 p-2.5 rounded-2xl flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce [animation-delay:0.2s]" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce [animation-delay:0.4s]" />
+                <div className="bg-[#1e073d] border border-purple-800 p-2.5 rounded-2xl flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:0.2s]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:0.4s]" />
                 </div>
               </div>
             )}
@@ -270,7 +276,7 @@ export const CustomerChatbot: React.FC = () => {
           </div>
 
           {/* صندوق كتابة الرسالة */}
-          <div className="p-3 bg-slate-900 border-t border-slate-800">
+          <div className="p-3 bg-[#180530] border-t border-purple-800/80">
             <form
               onSubmit={e => {
                 e.preventDefault();
@@ -283,12 +289,12 @@ export const CustomerChatbot: React.FC = () => {
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
                 placeholder="اكتب استفسارك هنا..."
-                className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-emerald-500"
+                className="flex-1 bg-[#0e021f] border border-purple-800/80 rounded-xl px-3.5 py-2.5 text-xs text-purple-100 placeholder:text-purple-400/60 focus:outline-none focus:border-amber-400"
               />
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="w-10 h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center transition cursor-pointer disabled:opacity-40"
+                className="w-10 h-10 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-purple-950 flex items-center justify-center transition cursor-pointer disabled:opacity-40 shadow-sm"
               >
                 <Send className="w-4 h-4 -rotate-90" />
               </button>

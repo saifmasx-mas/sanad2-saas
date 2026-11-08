@@ -82,18 +82,18 @@ export const SimulationPipeline: React.FC<SimulationPipelineProps> = ({
 
   return (
     <div className="space-y-8 pb-16">
-      {/* رأس المحاكي */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-950 via-slate-900 to-slate-950 border border-rose-900/40 p-6 sm:p-8">
+      {/* رأس المحاكي بالنمط الملكي الأرجواني والذهبي */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#280754] via-[#3b0b78] to-[#180238] border border-amber-400/40 p-6 sm:p-8 shadow-2xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-xs font-bold mb-3 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>محاكي دورة العمل الآلية المتكاملة (End-to-End Event Simulator)</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">
+            <h1 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 tracking-tight mb-2">
               شاهد كيف تتناغم المنظومة بلحظة واحدة!
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-purple-200/90 leading-relaxed">
               محاكاة حية توضح كيف ينتقل الحدث من نقرة دفع المغترب في برلين، مروراً ببوابة Lemon Squeezy ومسار n8n، وصولاً لتحديث Supabase وبرقية التليغرام على هاتف مزود دمشق، وتحديث الأسعار التلقائي عبر Gemini.
             </p>
           </div>
@@ -102,16 +102,16 @@ export const SimulationPipeline: React.FC<SimulationPipelineProps> = ({
             <button
               onClick={onTriggerFullPipeline}
               disabled={isSimulating}
-              className="flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-400 hover:to-amber-400 text-slate-950 font-black px-5 py-3 rounded-2xl text-xs sm:text-sm shadow-xl shadow-rose-500/20 transition cursor-pointer disabled:opacity-50"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 hover:from-amber-300 hover:to-yellow-200 text-purple-950 font-black px-5 py-3 rounded-2xl text-xs sm:text-sm shadow-xl shadow-amber-500/20 transition cursor-pointer disabled:opacity-50"
             >
               <Play className={`w-4 h-4 ${isSimulating ? 'animate-spin' : ''}`} />
               <span>{isSimulating ? 'جاري تشغيل الدورة...' : 'تشغيل الدورة الآلية الكاملة الآن'}</span>
             </button>
             <button
               onClick={onRunGeminiAgent}
-              className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-teal-300 px-4 py-3 rounded-2xl text-xs font-bold transition cursor-pointer"
+              className="flex items-center justify-center gap-2 bg-[#0e021f] hover:bg-purple-950 border border-amber-400/40 text-amber-300 px-4 py-3 rounded-2xl text-xs font-bold transition cursor-pointer"
             >
-              <Cpu className="w-4 h-4 text-teal-400" />
+              <Cpu className="w-4 h-4 text-amber-400" />
               <span>تشغيل وكيل Gemini فقط</span>
             </button>
           </div>

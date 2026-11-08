@@ -8,6 +8,7 @@ import { AiPricingModal } from './components/AiPricingModal';
 import { ContactUs } from './components/ContactUs';
 import { AuthModal } from './components/AuthModal';
 import { CustomerChatbot } from './components/CustomerChatbot';
+import { OrderTracking } from './components/OrderTracking';
 import { 
   INITIAL_SERVICES, 
   INITIAL_ORDERS, 
@@ -26,12 +27,13 @@ import {
 } from './types/sanad';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'expat' | 'provider' | 'architecture' | 'pipeline' | 'contact'>('expat');
+  const [activeTab, setActiveTab] = useState<'expat' | 'tracking' | 'provider' | 'architecture' | 'pipeline' | 'contact'>('expat');
   const [services, setServices] = useState<ServicePackage[]>(INITIAL_SERVICES);
   const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
   const [exchangeRate, setExchangeRate] = useState<ExchangeRateInfo>(CURRENT_EXCHANGE_RATE);
   const [logs, setLogs] = useState<AgentLog[]>(INITIAL_LOGS);
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(CURRENT_EXPAT_USER);
+  const [activeTrackingOrderId, setActiveTrackingOrderId] = useState<string | undefined>(undefined);
   
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const [isRefreshingRate, setIsRefreshingRate] = useState(false);
@@ -195,7 +197,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-['Cairo',sans-serif] selection:bg-emerald-500 selection:text-slate-950">
+    <div className="min-h-screen bg-[#0d011c] text-purple-100 font-['Cairo',sans-serif] selection:bg-amber-400 selection:text-purple-950 relative overflow-x-hidden">
+      {/* خلفيات هالات كونية بنفسجية وذهبية مستوحاة من التصميم */}
+      <div className="fixed top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed top-1/3 right-10 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[130px] pointer-events-none -z-10" />
+      <div className="fixed bottom-0 left-10 w-[600px] h-[600px] bg-fuchsia-600/10 rounded-full blur-[150px] pointer-events-none -z-10" />
+
       {/* شريط التنقل العلوي لسَنَد 2 */}
       <Navbar
         activeTab={activeTab}
@@ -218,6 +225,18 @@ export default function App() {
             currentUser={currentUser || CURRENT_EXPAT_USER}
             onPlaceOrder={handlePlaceOrder}
             onGoToProvider={() => setActiveTab('provider')}
+            onGoToTracking={(orderId) => {
+              if (orderId) setActiveTrackingOrderId(orderId);
+              setActiveTab('tracking');
+            }}
+          />
+        )}
+
+        {activeTab === 'tracking' && (
+          <OrderTracking
+            orders={orders}
+            activeOrderId={activeTrackingOrderId}
+            onGoToExpatStore={() => setActiveTab('expat')}
           />
         )}
 
@@ -270,15 +289,15 @@ export default function App() {
       {/* الشات بوت الذكي للرد على العملاء (Customer Support Chatbot) */}
       <CustomerChatbot />
 
-      {/* شريط سفلي موثق */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-400">
+      {/* شريط سفلي موثق باللون البنفسجي الملكي والذهبي */}
+      <footer className="border-t border-purple-900/40 bg-[#120227]/90 backdrop-blur-md py-6 text-center text-xs text-purple-300/70 mt-12">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="font-semibold text-slate-300">سَنَد 2 (Sanad 2)</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-sm shadow-amber-400" />
+            <span className="font-bold text-amber-300">سَنَد 2 (Sanad 2)</span>
             <span>- تركيا، بورصة • هاتف: +90 536 251 58 78 • saif.masx@gmail.com</span>
           </div>
-          <div className="flex items-center gap-4 text-[11px] text-slate-400 font-mono">
+          <div className="flex items-center gap-4 text-[11px] text-amber-400/80 font-mono">
             <span>Next.js 15</span>
             <span>•</span>
             <span>Supabase Auth</span>

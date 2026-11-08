@@ -112,26 +112,26 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-700 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-scale-in text-slate-100 font-['Cairo']">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="bg-[#180530] border border-amber-400/50 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-scale-in text-purple-100 font-['Cairo']">
         
         {/* زر الإغلاق */}
         <button
           onClick={onClose}
-          className="absolute left-5 top-5 text-slate-400 hover:text-white p-1 transition"
+          className="absolute left-5 top-5 text-purple-300 hover:text-white p-1 transition cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* رأس النافذة */}
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white font-black text-xl mx-auto mb-3 shadow-lg shadow-emerald-500/20">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 flex items-center justify-center text-purple-950 font-black text-xl mx-auto mb-3 shadow-lg shadow-amber-400/30">
             سَـ2
           </div>
-          <h2 className="text-xl font-black text-white">
+          <h2 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500">
             {activeTab === 'login' ? 'تسجيل الدخول إلى سَنَد 2' : 'إنشاء حساب جديد في سَنَد 2'}
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-purple-300/80 mt-1">
             {activeTab === 'login' 
               ? 'أهلاً بعودتك! تابع طلبات أهلك ومستحقاتك في سوريا'
               : 'انضم إلى شبكة سَنَد 2 كمغترب أو كمزود محلي معتمد'}
@@ -139,13 +139,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </div>
 
         {/* التبديل بين تسجيل الدخول وإنشاء الحساب */}
-        <div className="flex bg-slate-950 p-1 rounded-2xl border border-slate-800 mb-6">
+        <div className="flex bg-[#0e021f] p-1 rounded-2xl border border-purple-800/80 mb-6">
           <button
             onClick={() => setActiveTab('login')}
             className={`flex-1 py-2 text-xs font-bold rounded-xl transition cursor-pointer ${
               activeTab === 'login'
-                ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-purple-950 font-black shadow-md'
+                : 'text-purple-300 hover:text-white'
             }`}
           >
             تسجيل الدخول
@@ -154,8 +154,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             onClick={() => setActiveTab('register')}
             className={`flex-1 py-2 text-xs font-bold rounded-xl transition cursor-pointer ${
               activeTab === 'register'
-                ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-purple-950 font-black shadow-md'
+                : 'text-purple-300 hover:text-white'
             }`}
           >
             إنشاء حساب جديد
@@ -194,14 +194,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </button>
 
         <div className="relative flex items-center justify-center mb-5">
-          <div className="border-t border-slate-800 w-full" />
-          <span className="bg-slate-900 px-3 text-[11px] text-slate-500 absolute">أو بالبريد الإلكتروني</span>
+          <div className="border-t border-purple-800/80 w-full" />
+          <span className="bg-[#180530] px-3 text-[11px] text-purple-300/80 absolute">أو بالبريد الإلكتروني</span>
         </div>
 
         {/* رسالة النجاح إن وجدت */}
         {successMessage && (
-          <div className="mb-4 p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs flex items-center gap-2 animate-fade-in">
-            <CheckCircle2 className="w-4 h-4 shrink-0" />
+          <div className="mb-4 p-3 rounded-xl bg-purple-900/80 border border-amber-400/60 text-amber-300 text-xs flex items-center gap-2 animate-fade-in font-bold">
+            <CheckCircle2 className="w-4 h-4 shrink-0 text-amber-400" />
             <span>{successMessage}</span>
           </div>
         )}
@@ -211,30 +211,30 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           {activeTab === 'register' && (
             <>
               <div>
-                <label className="block text-slate-300 mb-1">الاسم الكامل:</label>
+                <label className="block text-purple-200 mb-1">الاسم الكامل:</label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-slate-500 absolute right-3 top-2.5" />
+                  <User className="w-4 h-4 text-purple-400 absolute right-3 top-2.5" />
                   <input
                     type="text"
                     required
                     value={regFullName}
                     onChange={e => setRegFullName(e.target.value)}
                     placeholder="مثال: سيف الدين الحلبي"
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl pr-9 pl-3 py-2 text-slate-100 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-[#0e021f] border border-purple-800/80 rounded-xl pr-9 pl-3 py-2 text-purple-100 placeholder:text-purple-400/60 focus:outline-none focus:border-amber-400"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1">نوع الحساب:</label>
+                <label className="block text-purple-200 mb-1">نوع الحساب:</label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
                     onClick={() => setRegRole('expat')}
                     className={`p-2 rounded-xl border text-center transition cursor-pointer ${
                       regRole === 'expat'
-                        ? 'bg-emerald-950/60 border-emerald-500 text-emerald-300 font-bold'
-                        : 'bg-slate-950 border-slate-800 text-slate-400'
+                        ? 'bg-purple-900/80 border-amber-400 text-amber-300 font-bold shadow-sm'
+                        : 'bg-[#0e021f] border-purple-800 text-purple-300'
                     }`}
                   >
                     مغترب سوري في الخارج
@@ -244,8 +244,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     onClick={() => setRegRole('provider')}
                     className={`p-2 rounded-xl border text-center transition cursor-pointer ${
                       regRole === 'provider'
-                        ? 'bg-amber-950/60 border-amber-500 text-amber-300 font-bold'
-                        : 'bg-slate-950 border-slate-800 text-slate-400'
+                        ? 'bg-purple-900/80 border-amber-400 text-amber-300 font-bold shadow-sm'
+                        : 'bg-[#0e021f] border-purple-800 text-purple-300'
                     }`}
                   >
                     مزود خدمة في سوريا
@@ -254,16 +254,16 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1">رقم الهاتف:</label>
+                <label className="block text-purple-200 mb-1">رقم الهاتف:</label>
                 <div className="relative">
-                  <Phone className="w-4 h-4 text-slate-500 absolute right-3 top-2.5" />
+                  <Phone className="w-4 h-4 text-purple-400 absolute right-3 top-2.5" />
                   <input
                     type="tel"
                     required
                     value={regPhone}
                     onChange={e => setRegPhone(e.target.value)}
                     placeholder="+90 536 251 58 78"
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl pr-9 pl-3 py-2 text-slate-100 font-mono focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-[#0e021f] border border-purple-800/80 rounded-xl pr-9 pl-3 py-2 text-purple-100 placeholder:text-purple-400/60 font-mono focus:outline-none focus:border-amber-400"
                   />
                 </div>
               </div>
@@ -271,31 +271,31 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           )}
 
           <div>
-            <label className="block text-slate-300 mb-1">البريد الإلكتروني:</label>
+            <label className="block text-purple-200 mb-1">البريد الإلكتروني:</label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-slate-500 absolute right-3 top-2.5" />
+              <Mail className="w-4 h-4 text-purple-400 absolute right-3 top-2.5" />
               <input
                 type="email"
                 required
                 value={activeTab === 'login' ? loginEmail : regEmail}
                 onChange={e => activeTab === 'login' ? setLoginEmail(e.target.value) : setRegEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pr-9 pl-3 py-2 text-slate-100 font-mono focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#0e021f] border border-purple-800/80 rounded-xl pr-9 pl-3 py-2 text-purple-100 placeholder:text-purple-400/60 font-mono focus:outline-none focus:border-amber-400"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-slate-300 mb-1">كلمة المرور:</label>
+            <label className="block text-purple-200 mb-1">كلمة المرور:</label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-slate-500 absolute right-3 top-2.5" />
+              <Lock className="w-4 h-4 text-purple-400 absolute right-3 top-2.5" />
               <input
                 type="password"
                 required
                 value={activeTab === 'login' ? loginPassword : regPassword}
                 onChange={e => activeTab === 'login' ? setLoginPassword(e.target.value) : setRegPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pr-9 pl-3 py-2 text-slate-100 font-mono focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#0e021f] border border-purple-800/80 rounded-xl pr-9 pl-3 py-2 text-purple-100 placeholder:text-purple-400/60 font-mono focus:outline-none focus:border-amber-400"
               />
             </div>
           </div>
@@ -303,13 +303,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs transition cursor-pointer shadow-lg shadow-emerald-500/20 mt-2"
+            className="w-full py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 hover:from-amber-300 hover:to-yellow-200 text-purple-950 font-black text-xs transition cursor-pointer shadow-lg shadow-amber-400/20 mt-2"
           >
             {isLoading ? 'جاري التحقق...' : (activeTab === 'login' ? 'دخول إلى حسابي' : 'إنشاء حساب جديد')}
           </button>
         </form>
 
-        <p className="text-[10px] text-center text-slate-500 mt-4">
+        <p className="text-[10px] text-center text-purple-300/70 mt-4">
           بياناتك مشفرة ومحمية وفق معايير Supabase Auth & Google OAuth 2.0
         </p>
       </div>

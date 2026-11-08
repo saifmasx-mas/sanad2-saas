@@ -3,6 +3,8 @@
 @layer base {
   body {
     font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #0d011c;
+    color: #f5f3ff;
   }
   
   code, pre {
@@ -10,18 +12,34 @@
   }
 }
 
-/* Custom smooth dark scrollbar */
+/* Custom smooth royal purple & gold scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #0d011c;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #3b0764;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
+  background: #f59e0b;
+}
+
+/* Gold metallic gradient text utility */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Purple cosmic glow */
+.purple-glow {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+}
+
+.gold-glow {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
 }

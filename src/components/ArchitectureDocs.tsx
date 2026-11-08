@@ -40,32 +40,32 @@ export const ArchitectureDocs: React.FC = () => {
 
   return (
     <div className="space-y-8 pb-16">
-      {/* رأس الصفحة مع شارات المراحل الأربعة */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-slate-950 border border-indigo-900/40 p-6 sm:p-8">
+      {/* رأس الصفحة مع شارات المراحل الأربعة بالنمط الملكي الأرجواني والذهبي */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#280754] via-[#3b0b78] to-[#180238] border border-amber-400/40 p-6 sm:p-8 shadow-2xl">
         <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3">
-            <Layers className="w-3.5 h-3.5" />
-            <span>المعمارية الهندسية الشاملة لمنصة سَنَد (Solutions Architecture Blueprint)</span>
+          <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-xs font-bold mb-3 shadow-sm">
+            <Layers className="w-3.5 h-3.5 text-amber-300" />
+            <span>المعمارية الهندسية الشاملة لمنصة سَنَد 2 (Solutions Architecture Blueprint)</span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-2">
+          <h1 className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 tracking-tight mb-2">
             خطة التنفيذ البرمجية المتقنة (4 مراحل دقيقة)
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-purple-200/90 leading-relaxed">
             أكواد برمجية جاهزة للإنتاج، خالية من الأخطاء، معمارية متينة تربط Next.js مع Supabase و Lemon Squeezy ومسارات n8n ووكيل بايثون المستقل مع Gemini 2.5 على سيرفر VPS.
           </p>
         </div>
 
         {/* أزرار التبديل بين المراحل الأربعة المطلوبة */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-6 pt-6 border-t border-slate-800">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-6 pt-6 border-t border-purple-800/60">
           <button
             onClick={() => setActiveStage('stage1')}
             className={`p-3 rounded-2xl text-right transition cursor-pointer border ${
               activeStage === 'stage1'
-                ? 'bg-indigo-600 text-white border-indigo-500 shadow-lg shadow-indigo-600/20'
-                : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
+                ? 'bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-purple-950 font-black border-amber-300 shadow-lg shadow-amber-400/20'
+                : 'bg-[#0e021f] text-purple-300 border-purple-800/70 hover:border-purple-600'
             }`}
           >
-            <div className="text-[10px] opacity-75 font-mono mb-1">المرحلة الأولى</div>
+            <div className={`text-[10px] font-mono mb-1 ${activeStage === 'stage1' ? 'text-purple-950/80 font-bold' : 'text-purple-400'}`}>المرحلة الأولى</div>
             <div className="font-bold text-xs sm:text-sm flex items-center gap-1.5">
               <Database className="w-4 h-4 shrink-0" />
               <span>قاعدة البيانات والواجهات</span>
@@ -76,11 +76,11 @@ export const ArchitectureDocs: React.FC = () => {
             onClick={() => setActiveStage('stage2')}
             className={`p-3 rounded-2xl text-right transition cursor-pointer border ${
               activeStage === 'stage2'
-                ? 'bg-emerald-600 text-white border-emerald-500 shadow-lg shadow-emerald-600/20'
-                : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
+                ? 'bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-purple-950 font-black border-amber-300 shadow-lg shadow-amber-400/20'
+                : 'bg-[#0e021f] text-purple-300 border-purple-800/70 hover:border-purple-600'
             }`}
           >
-            <div className="text-[10px] opacity-75 font-mono mb-1">المرحلة الثانية</div>
+            <div className={`text-[10px] font-mono mb-1 ${activeStage === 'stage2' ? 'text-purple-950/80 font-bold' : 'text-purple-400'}`}>المرحلة الثانية</div>
             <div className="font-bold text-xs sm:text-sm flex items-center gap-1.5">
               <CreditCard className="w-4 h-4 shrink-0" />
               <span>الدفع والأتمتة (n8n)</span>
@@ -91,11 +91,11 @@ export const ArchitectureDocs: React.FC = () => {
             onClick={() => setActiveStage('stage3')}
             className={`p-3 rounded-2xl text-right transition cursor-pointer border ${
               activeStage === 'stage3'
-                ? 'bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-600/20'
-                : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
+                ? 'bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-purple-950 font-black border-amber-300 shadow-lg shadow-amber-400/20'
+                : 'bg-[#0e021f] text-purple-300 border-purple-800/70 hover:border-purple-600'
             }`}
           >
-            <div className="text-[10px] opacity-75 font-mono mb-1">المرحلة الثالثة</div>
+            <div className={`text-[10px] font-mono mb-1 ${activeStage === 'stage3' ? 'text-purple-950/80 font-bold' : 'text-purple-400'}`}>المرحلة الثالثة</div>
             <div className="font-bold text-xs sm:text-sm flex items-center gap-1.5">
               <Cpu className="w-4 h-4 shrink-0" />
               <span>الوكيل المستقل (Python 24/7)</span>
@@ -106,11 +106,11 @@ export const ArchitectureDocs: React.FC = () => {
             onClick={() => setActiveStage('stage4')}
             className={`p-3 rounded-2xl text-right transition cursor-pointer border ${
               activeStage === 'stage4'
-                ? 'bg-rose-600 text-white border-rose-500 shadow-lg shadow-rose-600/20'
-                : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
+                ? 'bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-purple-950 font-black border-amber-300 shadow-lg shadow-amber-400/20'
+                : 'bg-[#0e021f] text-purple-300 border-purple-800/70 hover:border-purple-600'
             }`}
           >
-            <div className="text-[10px] opacity-75 font-mono mb-1">المرحلة الرابعة</div>
+            <div className={`text-[10px] font-mono mb-1 ${activeStage === 'stage4' ? 'text-purple-950/80 font-bold' : 'text-purple-400'}`}>المرحلة الرابعة</div>
             <div className="font-bold text-xs sm:text-sm flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 shrink-0" />
               <span>ضمان الجودة والجاهزية (QA)</span>
